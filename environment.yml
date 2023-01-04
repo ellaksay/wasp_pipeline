@@ -12,7 +12,6 @@ dependencies:
   - pysam
   - hdf5
   - pytables
-  - bcftools
   - bwa
   - samtools 
 
