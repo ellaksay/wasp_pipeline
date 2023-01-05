@@ -2,12 +2,11 @@
 
 # splitting the newly converted hg38 file, sorted and compressed
 # VCF_DIR="/iblm/netapp/data3/gsiguenza/phased_vcf/issa_3_hg38"
-VCF_DIR="/iblm/netapp/home/gsiguenza/WASP/DATA/crossmap_hg38/fikt_3"
+VCF="/iblm/netapp/data3/jjaureguy/PRJEB18997/phased_vcf/combined_vcf/merged_vcf_post_lift_sorted.vcf.gz"
 
-# outputting split by chrom into fikt_3_split directory
-OUTPUT_DIR="/iblm/netapp/home/gsiguenza/WASP/DATA/chrom_split"
+# outputting split by chrom into
+OUTPUT_DIR="/iblm/netapp/data4/jjaureguy/WASP_pipeline/wasp_output/chrom_split"
 
-cd $VCF_DIR
 # run bcftools and index chrom 1 - 22 for fikt_3
 
 #copy paste this into crossmap script
@@ -19,7 +18,7 @@ cd $VCF_DIR
 echo "working on splitting chromosome 1 - 22 and redirecting output to folder..."
 for i in {1..22}
 do
-bcftools view -r "chr${i}" fikt_3_hg38_sorted.vcf.gz -Oz -o $OUTPUT_DIR/fikt_3_split/chrom_split_${i}.vcf.gz
+bcftools view -r "chr${i}" ${VCF} -Oz -o $OUTPUT_DIR/chrom_split_${i}.vcf.gz
 done
 
 echo "done"
